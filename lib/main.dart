@@ -15,6 +15,7 @@ class NotesApp extends StatelessWidget {
       title: "flutter Demo",
       theme: ThemeData(
         brightness: Brightness.dark,
+        fontFamily: 'Poppins',
       ),
       home:  const NotesView(),
     );
