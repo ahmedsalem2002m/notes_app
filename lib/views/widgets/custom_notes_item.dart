@@ -37,7 +37,7 @@ class NotesItem extends StatelessWidget {
                 'Ahmed Salem Mohamed Ahmed Salem',
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
-                  fontSize: 18,
+                  fontSize: 16,
                   color: Colors.black.withOpacity(.3),
                 ),
               ),
