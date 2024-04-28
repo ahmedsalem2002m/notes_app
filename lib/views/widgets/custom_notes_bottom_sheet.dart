@@ -8,24 +8,65 @@ class AddNotesBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding:EdgeInsets.symmetric(
-        horizontal: 16
-      ),
-      child:SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 32,),
-            CustomTextField(hint: 'title',),
-            SizedBox(height: 16,),
-            CustomTextField(maxLines: 5,hint: 'content',),
-            SizedBox(height: 32,),
-            CustomButton()
-        
-          ],
-        ),
-      ),
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: SingleChildScrollView(child: AddNoteForm()),
     );
   }
 }
 
+class AddNoteForm extends StatefulWidget {
+  const AddNoteForm({super.key});
 
+  @override
+  State<AddNoteForm> createState() => _AddNoteFormState();
+}
+
+class _AddNoteFormState extends State<AddNoteForm> {
+  final GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
+
+  String? title, subTitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: formKey,
+      autovalidateMode: autoValidateMode,
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 32,
+          ),
+          CustomTextField(
+            onSaved: (value) {
+              title = value;
+            },
+            hint: 'title',
+          ),
+          const SizedBox(
+            height: 40,
+          ),
+          CustomTextField(
+            onSaved: (value) {
+              subTitle = value;
+            },
+            maxLines: 5,
+            hint: 'content',
+          ),
+          const SizedBox(
+            height: 65,
+          ),
+          CustomButton(onTap: () {
+            if (formKey.currentState!.validate()) {
+              formKey.currentState!.save();
+            } else {
+              autoValidateMode = AutovalidateMode.always;
+              setState(() {});
+            }
+          }
+          ),
+        ],
+      ),
+    );
+  }
+}
