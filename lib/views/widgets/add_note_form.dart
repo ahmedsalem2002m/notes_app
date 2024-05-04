@@ -35,7 +35,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
             hint: 'title',
           ),
           const SizedBox(
-            height: 40,
+            height: 30,
           ),
           CustomTextField(
             onSaved: (value) {
@@ -45,7 +45,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
             hint: 'content',
           ),
           const SizedBox(
-            height: 65,
+            height: 50,
           ),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
